@@ -16,7 +16,7 @@
   GHHI                GHHHHHI      GHHHHI         2                                        2
                                                           2
                   1               2                                                            2EF
-         *       EF                           2    2            2          2      2          2 EMD
+                 EF                           2    2            2          2      2          2 EMD
         EF  1    CD       1    1    1     1       1           1      1                        EMAD         3  *
 BBBBBBBBMLBBBBBBBMLBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBMAALBBBBBBBBBMAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

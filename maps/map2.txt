@@ -12,11 +12,11 @@
                                                                  
 
 
-                       o o o        o o o       o     o      o 
-  GHHI                GHHHHHI      GHHHHI       o     o         2
-                                                  o        2
-                                  2                 2EF
-                EF                                 EMD
-       EF  1    CD       1           1            EMAD     *   3
-BBBBBBBBMLBBBBBBBMLBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBMAALBBBBBBBBBMA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                       2              1     2             2                   2
+  GHHI                GHHHHHI      GHHHHI         2                                        2
+                                                          2
+                  1               2                                                            2EF
+                 EF                           2    2            2          2      2          2 EMD
+        EF  1    CD       1    1    1     1       1           1      1                        EMAD     3   *
+BBBBBBBBMLBBBBBBBMLBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBMAALBBBBBBBBBMA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

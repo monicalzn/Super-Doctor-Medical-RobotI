@@ -163,6 +163,7 @@ public class GameManager extends GameCore {
         story = false;
         lives = 3;
         Inext = 0;
+        score.properSetScore(0);
         // start resource manager
         
         // load first map

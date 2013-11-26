@@ -147,7 +147,32 @@ public class ResourceManager {
 
         return map;
     }
+  /**
+* Reload Map
+*
+* @return Tile Map
+*/
 
+   public TileMap loadNextMapSpecial(int Cmap) {
+        TileMap map = null;
+        while (map == null) {
+            currentMap = Cmap;
+            try {
+                map = loadMap(
+                    "/maps/map" + currentMap + ".txt");
+            }
+            catch (IOException ex) {
+                if (currentMap == 1) {
+                    // no maps to load!
+                    return null;
+                }
+                currentMap = 0;
+                map = null;
+            }
+        }
+
+        return map;
+    }
 
     /**
 * Reload Map
@@ -181,9 +206,9 @@ public class ResourceManager {
         int height = 0;
         InputStream ipStrm = ResourceManager.class.getResourceAsStream(filename);
 
-    InputStreamReader ipStrmRdr = new InputStreamReader(ipStrm);
-    BufferedReader reader = new BufferedReader(ipStrmRdr);
-        // read every line in the text file into the list
+        InputStreamReader ipStrmRdr = new InputStreamReader(ipStrm);
+        BufferedReader reader = new BufferedReader(ipStrmRdr);
+            // read every line in the text file into the list
         //BufferedReader reader = new BufferedReader(
         // new FileReader(urlMap.toString()));
         while (true) {
@@ -712,10 +737,10 @@ public class ResourceManager {
     private void loadPowerUpSprites() {
         // create "goal" sprite
         Animation anim = new Animation();
-        anim.addFrame(loadImage("heart1.png"), 150);
-        anim.addFrame(loadImage("heart2.png"), 150);
-        anim.addFrame(loadImage("heart3.png"), 150);
-        anim.addFrame(loadImage("heart2.png"), 150);
+        anim.addFrame(loadImage("buster.png"), 150);
+        anim.addFrame(loadImage("buster.png"), 150);
+        anim.addFrame(loadImage("buster.png"), 150);
+        anim.addFrame(loadImage("buster.png"), 150);
         goalSprite = new PowerUp.Goal(anim);
 
         // create "star" sprite
