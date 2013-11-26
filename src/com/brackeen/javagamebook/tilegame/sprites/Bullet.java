@@ -2,103 +2,71 @@ package com.brackeen.javagamebook.tilegame.sprites;
 
 import com.brackeen.javagamebook.tilegame.GameManager;
 import com.brackeen.javagamebook.graphics.Animation;
-
-import com.brackeen.javagamebook.tilegame.*;
-
-import com.brackeen.javagamebook.input.*;
-import com.brackeen.javagamebook.test.GameCore;
-
-import java.awt.*;
-import javax.swing.ImageIcon;
-import java.awt.geom.AffineTransform;
-import java.io.*;
-import java.util.ArrayList;
-
-import com.brackeen.javagamebook.graphics.*;
-import com.brackeen.javagamebook.tilegame.sprites.*;
-import java.awt.image.BufferedImage;
+import com.brackeen.javagamebook.tilegame.TileMapRenderer;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import com.brackeen.javagamebook.graphics.Sprite;
 
  
-public class Bullet {
+public class Bullet extends Sprite{
  
-        // For creating new bullets.
-    public long timeBetweenNewBullets = 10;
-    public long timeOfLastCreatedBullet = 0;
+    private int r;
     
-    // Damage that is made to an enemy helicopter when it is hit with a bullet.
-    public int damagePower = 20;
+    private double ddx;
+    private double ddy;
+    private double rad;
+    private double speed;
+    private boolean live;
     
-    // Position of the bullet on the screen. Must be of type double because movingXspeed and movingYspeed will not be a whole number.
-    public double xCoordinate;
-    public double yCoordinate;
+    private Color color1;
     
-    public double x;
-    public double y;
-    
-    // Moving speed and direction.
-    private double movingXspeed = 2;
-    private double movingYspeed = 0;
-    
-    // Images of helicopter machine gun bullet. Image is loaded and set in Game class in LoadContent() method.
-    public Image bulletImg;
-    
-    
-    /**
-     * Creates new machine gun bullet.
-     * 
-     * @param xCoordinate From which x coordinate was bullet fired?
-     * @param yCoordinate From which y coordinate was bullet fired?
-     * @param mousePosition Position of the mouse at the time of the shot.
-     */
-    public Bullet(int xCoordinate, int yCoordinate, int x)
-    {
-        this.xCoordinate = xCoordinate;
-        this.y = this.yCoordinate = yCoordinate;
-        this.x = x;
-         
+    //Constructor
+    public Bullet(Animation anim, double angle, float x, float y){
         
+        super(anim, x, y);
+        /*
+        while(x-GameManager.screen.getWidth() > 0){
+            x -= GameManager.screen.getWidth(); 
+        } */
+    
+        
+    
+        r=6;
+
+        rad = Math.toRadians(angle);
+        speed = 2;
+        ddx = Math.cos(rad) * speed;
+        ddy = Math.sin(rad) * speed;
+    
+        color1 = Color.BLUE;
+        live=false;
+         
     }
+        
+    public boolean updateBullet(long elapsedTime){
+        this.setX(this.getX()+(float)ddx);
+        this.setY(this.getY()+(float)ddy);
   
+        //anim.update(elapsedTime);
     
-    public void setBulIm(Image Bull){
-        this.bulletImg = Bull;
-    }
-    /*
-     * Checks if the bullet is left the screen.
-     * 
-     * @return true if the bullet left the screen, false otherwise.
-     */
-    
-      public int getXS(){
-        return (int)x;
+       /* if(this.getX() < -r || this.getX() > GameManager.screen.getWidth() - TileMapRenderer.offsetX + r ||
+                this.getY() < -r || this.getY() > GameManager.screen.getHeight() + r){
+            return true;
+        } */
+        return false;
     }
     
-    public int getYS(){
-        return (int)y;
+    public double getSpeed(){
+        return this.speed;
+    }
+    public void setLive(boolean l){
+        this.live = l;
     }
     
-    /*
-     * Moves the bullet.
-     */
-    public void Update()
-    {
-        xCoordinate += movingXspeed;
-        x += movingXspeed;
-    }
-    public int getX(){
-        return (int)xCoordinate;
+    public void draw(Graphics2D g){
+        //g.setColor(color1);
+        //g.fillOval((int)(x - r), (int)(y - r), 2 * r, 2 * r);
+        g.drawImage(this.getImage(), Math.round(this.getX()), Math.round(this.getY()), null);
     }
     
-    public int getY(){
-        return (int)yCoordinate;
-    }
-    /**
-     * Draws the bullet to the screen.
-     * 
-     * @param g2d Graphics2D
-     */
-    public void DrawB(Graphics2D g2d)
-    {
-        g2d.drawImage(bulletImg, (int)xCoordinate, (int)yCoordinate, null);
-    }
 }

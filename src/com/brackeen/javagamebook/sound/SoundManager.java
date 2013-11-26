@@ -5,6 +5,7 @@ import javax.sound.sampled.*;
 import javax.sound.midi.*;
 import com.brackeen.javagamebook.util.ThreadPool;
 import com.brackeen.javagamebook.util.LoopingByteInputStream;
+import java.net.URL;
 
 
 /**
@@ -28,8 +29,9 @@ public class SoundManager extends ThreadPool {
     private boolean paused;
 
     /**
-        Creates a new SoundManager using the maximum number of
-        simultaneous sounds.
+* Creates a new SoundManager using the maximum number of
+* simultaneous sounds.
+* @param playbackFormat
     */
     public SoundManager(AudioFormat playbackFormat) {
         this(playbackFormat,
@@ -38,8 +40,10 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Creates a new SoundManager with the specified maximum
-        number of simultaneous sounds.
+* Creates a new SoundManager with the specified maximum
+* number of simultaneous sounds.
+* @param playbackFormat the format of the audio
+* @param maxSimultaneousSounds the maximum number of simultaneous sounds
     */
     public SoundManager(AudioFormat playbackFormat,
         int maxSimultaneousSounds)
@@ -58,8 +62,10 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Gets the maximum number of simultaneous sounds with the
-        specified AudioFormat that the default mixer can play.
+* Gets the maximum number of simultaneous sounds with the
+* specified AudioFormat that the default mixer can play.
+* @param playbackFormat the audio format
+* @return the maximum number of simultaneous sounds
     */
     public static int getMaxSimultaneousSounds(
         AudioFormat playbackFormat)
@@ -85,13 +91,17 @@ public class SoundManager extends ThreadPool {
         }
     }
 
-
+    /**
+* Closes after cleaning up.
+*/
     public void close() {
         cleanUp();
         super.close();
     }
 
-
+    /**
+* Joins after cleaning up.
+*/
     public void join() {
         cleanUp();
         super.join();
@@ -99,7 +109,8 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Sets the paused state. Sounds may not pause immediately.
+* Sets the paused state. Sounds may not pause immediately.
+* @param paused the current paused state
     */
     public void setPaused(boolean paused) {
         if (this.paused != paused) {
@@ -123,8 +134,10 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Loads a Sound from the file system. Returns null if an
-        error occurs.
+* Loads a Sound from the file system. Returns null if an
+* error occurs.
+* @param filename the name of the sound file
+* @return the loaded sound
     */
     public Sound getSound(String filename) {
         return getSound(getAudioInputStream(filename));
@@ -132,8 +145,10 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Loads a Sound from an input stream. Returns null if an
-        error occurs.
+* Loads a Sound from an input stream. Returns null if an
+* error occurs.
+* @param is the input stream
+* @return the loaded sound
     */
     public Sound getSound(InputStream is) {
         return getSound(getAudioInputStream(is));
@@ -141,7 +156,9 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Loads a Sound from an AudioInputStream.
+* Loads a Sound from an AudioInputStream.
+* @param audioStream the audio stream
+* @return the loaded sound
     */
     public Sound getSound(AudioInputStream audioStream) {
         if (audioStream == null) {
@@ -169,13 +186,15 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Creates an AudioInputStream from a sound from the file
-        system.
+* Creates an AudioInputStream from a sound from the file
+* system.
+* @param filename the name of the sound file
+* @return the audio input stream
     */
     public AudioInputStream getAudioInputStream(String filename) {
         try {
-            return getAudioInputStream(
-                new FileInputStream(filename));
+            URL urlSound = SoundManager.class.getResource(filename);
+            return getAudioInputStream(urlSound.openStream());
         }
         catch (IOException ex) {
             ex.printStackTrace();
@@ -217,7 +236,9 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Plays a sound. This method returns immediately.
+* Plays a sound. This method returns immediately.
+* @param sound the sound to be played
+* @return the played sound
     */
     public InputStream play(Sound sound) {
         return play(sound, null, false);
@@ -225,8 +246,12 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Plays a sound with an optional SoundFilter, and optionally
-        looping. This method returns immediately.
+* Plays a sound with an optional SoundFilter, and optionally
+* looping. This method returns immediately.
+* @param sound the sound to be played
+* @param filter the sound filter
+* @param loop if the sound will be looped or not
+* @return the played sound
     */
     public InputStream play(Sound sound, SoundFilter filter,
         boolean loop)
@@ -248,8 +273,10 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Plays a sound from an InputStream. This method
-        returns immediately.
+* Plays a sound from an InputStream. This method
+* returns immediately.
+* @param is the input stream
+* @return the played sound
     */
     public InputStream play(InputStream is) {
         return play(is, null);
@@ -257,8 +284,11 @@ public class SoundManager extends ThreadPool {
 
 
     /**
-        Plays a sound from an InputStream with an optional
-        sound filter. This method returns immediately.
+* Plays a sound from an InputStream with an optional
+* sound filter. This method returns immediately.
+* @param is the input stream of the sound to be played
+* @param filter the sound filter
+* @return the played sound
     */
     public InputStream play(InputStream is, SoundFilter filter) {
         if (is != null) {

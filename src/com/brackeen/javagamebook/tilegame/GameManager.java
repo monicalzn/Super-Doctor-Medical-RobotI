@@ -14,6 +14,7 @@ import com.brackeen.javagamebook.graphics.*;
 import com.brackeen.javagamebook.sound.*;
 import com.brackeen.javagamebook.input.*;
 import com.brackeen.javagamebook.test.GameCore;
+import static com.brackeen.javagamebook.test.GameCore.screen;
 import com.brackeen.javagamebook.tilegame.sprites.*;
 import com.brackeen.javagamebook.tilegame.*;
 
@@ -69,21 +70,30 @@ public class GameManager extends GameCore {
     private boolean Bcredits;
     private boolean story;
     
-    private ArrayList<Bullet> bulletsList;
+    public static ArrayList<Bullet> bullets;
+    private Animation bulletAnim;
     
     private score score;
     private int Inext;
-    private int help;
+    private int angle;
+    private int bulletOffset;
+    private int lives;
+    private long timeHurt;
+    private long timerBO;
+    private int cont;
     
     static int v = 172;
 
 
+    /**
+* Initializes Game and variables.
+*/
     public void init() {
         
         super.init();
         score = new score();
 
-        bulletsList = new ArrayList<Bullet>();
+        cont = 0;
         // set up input manager
         initInput();
         Menu = true;
@@ -92,46 +102,58 @@ public class GameManager extends GameCore {
         story = false;
  
         Inext = 0;
+        lives = 3;
+        timeHurt = 0;
+        timerBO = 0;
         // start resource manager
         resourceManager = new ResourceManager(screen.getFullScreenWindow().getGraphicsConfiguration());
 
         // load resources
         renderer = new TileMapRenderer();
         renderer.setBackground(resourceManager.loadImage("background.png"));
-        renderer.setPause(resourceManager.loadImage("BlueMeth-03.png"));
-        renderer.setInst(resourceManager.loadImage("backgroundM.png"));
-        renderer.setCredits(resourceManager.loadImage("credits.png"));
-        renderer.setStory(resourceManager.loadImage("Story.png"));
-        renderer.setStory(resourceManager.loadImage("Story02.png"));
-        renderer.setStory(resourceManager.loadImage("Story.png"));
-        renderer.setStory(resourceManager.loadImage("Story02.png"));
+        renderer.setPause(resourceManager.loadImage("PauseV.png"));
+        renderer.setInst(resourceManager.loadImage("Instrucciones2.png"));
+        renderer.setCredits(resourceManager.loadImage("credito.png"));
+        renderer.setGameOver(resourceManager.loadImage("GameOver.png"));
+        renderer.setWin(resourceManager.loadImage("win.png"));
+        renderer.setStory(resourceManager.loadImage("1.jpg"));
+        renderer.setStory(resourceManager.loadImage("2.jpg"));
+        renderer.setStory(resourceManager.loadImage("3.jpg"));
+        renderer.setStory(resourceManager.loadImage("48.jpg"));
+        renderer.setStory(resourceManager.loadImage("4.jpg"));
+        renderer.setStory(resourceManager.loadImage("5.jpg"));
+        renderer.setStory(resourceManager.loadImage("6.jpg"));
+        renderer.setStory(resourceManager.loadImage("7.jpg"));
+        renderer.setStory(resourceManager.loadImage("8.jpg"));
+        renderer.setStory(resourceManager.loadImage("9.jpg"));
         
         
-        renderer.setBullet(resourceManager.loadImage("BlueMeth-03.png"));
         menu = new TileMapRenderer();
         menu.setBackground(resourceManager.loadImage("Menu.png"));
-        menu.setStart(resourceManager.loadImage("Start.png"));
+        menu.setStart(resourceManager.loadImage("conceptcorrectobien.png"));
 
         // load first map
         map = resourceManager.loadNextMap();
 
         // load sounds
         soundManager = new SoundManager(PLAYBACK_FORMAT);
-        prizeSound = soundManager.getSound("sounds/prize.wav");
-        boopSound = soundManager.getSound("sounds/boop2.wav");
+        prizeSound = soundManager.getSound("/sounds/prize.wav");
+        boopSound = soundManager.getSound("/sounds/boop2.wav");
 
         // start music
         midiPlayer = new MidiPlayer();
-        Sequence sequence = midiPlayer.getSequence("sounds/music.midi");
+        Sequence sequence = midiPlayer.getSequence("/sounds/music.midi");
         midiPlayer.play(sequence, true);
         toggleDrumPlayback();
+        
+        bullets = new ArrayList<Bullet>();
+        angle=0;
         
     }
 
     public void initSpecial() {
-        score.properSetScore(0);
-        bulletsList = new ArrayList<Bullet>();
         
+        bullets.clear();
         // set up input manager
         initInput();
         Menu = true;
@@ -139,36 +161,23 @@ public class GameManager extends GameCore {
         Bcredits = false;
         BStart = false;
         story = false;
+        lives = 3;
+        Inext = 0;
         // start resource manager
-        resourceManager = new ResourceManager(screen.getFullScreenWindow().getGraphicsConfiguration());
-
-        // load resources
-        renderer = new TileMapRenderer();
-        renderer.setBackground(resourceManager.loadImage("background.png"));
-        renderer.setPause(resourceManager.loadImage("BlueMeth-03.png"));
-        renderer.setInst(resourceManager.loadImage("backgroundM.png"));
-        renderer.setCredits(resourceManager.loadImage("credits.png"));
-        renderer.setStory(resourceManager.loadImage("Story.png"));
-        renderer.setStory(resourceManager.loadImage("Story02.png"));
-        renderer.setStory(resourceManager.loadImage("Story.png"));
-        renderer.setStory(resourceManager.loadImage("Story02.png"));
-        
-        menu = new TileMapRenderer();
-        menu.setBackground(resourceManager.loadImage("Menu.png"));
         
         // load first map
         map = resourceManager.loadNextMap();
 
         // load sounds
         soundManager = new SoundManager(PLAYBACK_FORMAT);
-        prizeSound = soundManager.getSound("sounds/prize.wav");
-        boopSound = soundManager.getSound("sounds/boop2.wav");
+        prizeSound = soundManager.getSound("/sounds/prize.wav");
+        boopSound = soundManager.getSound("/sounds/boop2.wav");
         
         
         // start music
         midiPlayer = new MidiPlayer();
         Sequence sequence =
-            midiPlayer.getSequence("sounds/music.midi");
+            midiPlayer.getSequence("/sounds/music.midi");
         midiPlayer.play(sequence, true);
         toggleDrumPlayback();
     }
@@ -182,6 +191,9 @@ public class GameManager extends GameCore {
         soundManager.close();
     }
 
+    /**
+* Declares input keys
+*/
     private void initInput() {
         menus = new GameAction("menus", GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit", GameAction.DETECT_INITAL_PRESS_ONLY);
@@ -219,13 +231,15 @@ public class GameManager extends GameCore {
         inputManager.mapToKey(moveDown, KeyEvent.VK_DOWN);
         inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);        
-        inputManager.mapToKey(shoot, KeyEvent.VK_A);        
+        inputManager.mapToKey(shoot, KeyEvent.VK_X);        
         inputManager.mapToKey(Gpause, KeyEvent.VK_P);
         inputManager.mapToKey(inst, KeyEvent.VK_I);
     }
     
-    
-    
+    /**
+* Checks input if player is alive
+* @param elapsedTime Time elapsed
+*/
     private void checkInput(long elapsedTime) {
         
         if (exit.isPressed()) {
@@ -237,13 +251,10 @@ public class GameManager extends GameCore {
             }
         }
         
-        if(Gpause.isPressed()){
-            if(!instructions){
+        if(Gpause.isPressed() && !instructions){
                 pause = !pause;
-            }
         }
             Player player = (Player)map.getPlayer(resourceManager.getCurrentM());
-            Player ship = (Player)map.getPlayer(resourceManager.getCurrentM());
             if (player.isAlive()) {
                 float velocityX;
                 if(CurMap){
@@ -256,22 +267,38 @@ public class GameManager extends GameCore {
                 if(!CurMap){
                     if (moveLeft.isPressed()) {
                         velocityX-=player.getMaxSpeed();
+                        angle=180;
+                        bulletOffset=0;
                     }
                     if (moveRight.isPressed()) {
                         velocityX+=player.getMaxSpeed();
+                        angle=0;
+                        bulletOffset=player.getWidth()/2;
                     }
                     if (jump.isPressed()) {
                         player.jump(false);
                     }
-                    if(shoot.isPressed()){
-                        if(!pause && !instructions){
-                            /*player.numberOfAmmo--;*/
-                            /*if(Math.round(player.getX()) > screen.getWidth()){*/
-                            Bullet b = new Bullet((Math.round(player.getX()) - (player.getWidth()/2) ), 
-                                    (Math.round(player.getY())- player.getHeight()/2),(Math.round(player.getX()) - (player.getWidth()/2)));
-                            bulletsList.add(b);
-                            //}
+                    if(player.getStanding()==0){
+                        bulletAnim = ResourceManager.bulletAnimationLeft();
+                    }else{
+                        bulletAnim = ResourceManager.bulletAnimationRight();
+                                }
+                    if(shoot.isPressed() && !pause && resourceManager.getCurrentM() > 2){
+                        if(player.isFiring()){
+                            long elapsed = (System.nanoTime() - player.getBulletTimer())/1000000;
+                            if(elapsed > player.getBulletDelay()){
+                                float x=player.getX();
+                               /* if(player.getX()%screen.getWidth() > 0){
+                                    for(int i=1; i<= player.getX()%screen.getWidth(); i++){
+                                        x -= screen.getWidth();
+                                    }
+                                }*/
+                                bullets.add(new Bullet(bulletAnim, angle, x +bulletOffset, player.getY()+player.getHeight()/2-16));
+                                map.addSprite(bullets.get(bullets.size()-1));
+                                player.setBulletTimer(System.nanoTime());
+                            }
                         }
+                    player.fire(true);
                     }
                 }else{
                     if (moveUp.isPressed()) {
@@ -322,7 +349,7 @@ public class GameManager extends GameCore {
         }
         if(Gnext.isPressed()){
             Inext++;
-            if(Inext >= 4){
+            if(Inext >= 10){
                 story = false;
                 initInputS();
             }
@@ -336,18 +363,25 @@ public class GameManager extends GameCore {
             menu.drawMenu(g, screen.getWidth(), screen.getHeight(), BStart);
             
         }
-        else if(story && Inext <= 4){
+        else if(story && Inext <= 10){
             renderer.drawStory(g, map, screen.getWidth(), screen.getHeight(), Inext);
+        }
+        else if(lives <= 0 ){
+            renderer.GameOver(g, map, screen.getWidth(), screen.getHeight());
+            
+            //renderer.drawInstCre(g, map, screen.getWidth(), screen.getHeight(), instructions, Bcredits);
+        }else if(cont == 4){
+            renderer.Win(g, map, screen.getWidth(), screen.getHeight());
+            
+                    Menu = true;
+                    initSpecial();
+                    map = resourceManager.reloadMap();
         }
         else{
             
-            renderer.draw(g, map, screen.getWidth(), screen.getHeight(), resourceManager.getCurrentM(), score.getScore());
-            if(!bulletsList.isEmpty()){
-                for(int j = 0; j < bulletsList.size(); j++){
-                    renderer.drawBullet(g, bulletsList.get(j).getX(), bulletsList.get(j).getY());
-                }
-            }
+            renderer.draw(g, map, screen.getWidth(), screen.getHeight(), resourceManager.getCurrentM(), score.getScore(), lives);
         }
+        
         if(Bcredits || instructions && !pause){
             renderer.drawInstCre(g, map, screen.getWidth(), screen.getHeight(), instructions, Bcredits);
         }
@@ -366,7 +400,6 @@ public class GameManager extends GameCore {
         return map;
     }
 
-
     /**
         Turns on/off drum playback in the midi music (track 1).
     */
@@ -378,9 +411,14 @@ public class GameManager extends GameCore {
     }
 
     /**
-        Gets the tile that a Sprites collides with. Only the
-        Sprite's X or Y should be changed, not both. Returns null
-        if no collision is detected.
+* Gets the tile that a Sprites collides with. Only the
+* Sprite's X or Y should be changed, not both. Returns null
+* if no collision is detected.
+*
+* @param sprite
+* @param newX
+* @param newY
+* @return Point
     */
     public Point getTileCollision(Sprite sprite, float newX, float newY){
         float fromX = Math.min(sprite.getX(), newX);
@@ -408,7 +446,6 @@ public class GameManager extends GameCore {
         // no collision found
         return null;
     }
-
 
     /**
         Checks if two Sprites collide with one another. Returns
@@ -442,10 +479,12 @@ public class GameManager extends GameCore {
             s2y < s1y + s1.getHeight());
     }
 
-
     /**
-        Gets the Sprite that collides with the specified Sprite,
-        or null if no Sprite collides with the specified Sprite.
+* Gets the Sprite that collides with the specified Sprite,
+* or null if no Sprite collides with the specified Sprite.
+*
+* @param sprite
+* @return Sprite
     */
     public Sprite getSpriteCollision(Sprite sprite) {
 
@@ -464,8 +503,10 @@ public class GameManager extends GameCore {
     }
     
     /**
-        Updates Animation, position, and velocity of all Sprites
-        in the current map.
+* Updates Animation, position, and velocity of all Sprites
+* in the current map.
+*
+* @param elapsedTime Time Elapsed
     */
     public void update(long elapsedTime) {
         if(Menu){
@@ -490,7 +531,6 @@ public class GameManager extends GameCore {
 
                 Creature player = (Creature)map.getPlayer(resourceManager.getCurrentM());
                 
-                updateBullets();
                 if(resourceManager.getCurrentM() == 1){
                     CurMap = true;
                     player.setisFlying(true);
@@ -499,21 +539,22 @@ public class GameManager extends GameCore {
                     CurMap = false;
                     player.setisFlying(false);
                 }
-
+                
                 // player is dead! start map over
                 if (player.getState() >= Creature.STATE_DEAD) {
                     HitBool = false;
-                    player.setState(0);
-                    map = resourceManager.reloadMap();
                     Menu = true;
                     initSpecial();
+                    player.setState(0);
+                    map = resourceManager.reloadMap();
                     return;
                 }
 
+                
                 // update player
                 updateCreature(player, elapsedTime);
                 player.update(elapsedTime);
-
+ 
                 // update other sprites
                 Iterator i = map.getSprites();
                 while (i.hasNext()) {
@@ -530,24 +571,56 @@ public class GameManager extends GameCore {
                     // normal update
                     sprite.update(elapsedTime);
                 }
-            }  
+                for(int j = 0; j < bullets.size(); j++){
+                    boolean remove = bullets.get(j).updateBullet(elapsedTime);
+                    if(remove){
+                        map.removeSprite(bullets.get(j));
+                        bullets.remove(j);
+                        j--;
+                    }  
+                }
+                /*for(int j = 0; j < bulletsBO.size(); j++){
+                    boolean remove = bulletsBO.get(j).updateBullet(elapsedTime);
+                    if(remove){
+                        map.removeSprite(bulletsBO.get(j));
+                        bulletsBO.remove(j);
+                        j--;
+                    }  
+                }*/
+                if(lives <= 0){
+                    player.setState(2);
+                }
+                timeHurt++;
+            checkBulletCollision();
+            /*for(int j = 0; j<bulletsBO.size(); j++){
+                if (isCollision(bullets.get(j), player)) {
+                    // collision found, return the Sprite
+                    lives --;
+                }
+            }*/
+            }
         }
     }
 
 
     /**
-        Updates the creature, applying gravity for creatures that
-        aren't flying, and checks collisions.
+* Updates the creature, applying gravity for creatures that
+* aren't flying, and checks collisions.
+*
+* @param creature
+* @param elapsedTime
     */
     private void updateCreature(Creature creature, long elapsedTime)
     {
+        /*if(creature.getType() == 3){
+            updateBossOne(creature);
+        }*/
 
         // apply gravity
         if (!creature.isFlying()) {
             creature.setVelocityY(creature.getVelocityY() + GRAVITY * elapsedTime);
         }
         
-
         // change x
         float dx = creature.getVelocityX();
         float oldX = creature.getX();
@@ -558,7 +631,6 @@ public class GameManager extends GameCore {
         }
         else {
             // line up with the tile boundary
-            
             if (dx > 0) {
                 creature.setX(TileMapRenderer.tilesToPixels(tile.x) - creature.getWidth());
             }
@@ -598,12 +670,26 @@ public class GameManager extends GameCore {
         }
 
     }
+    
+    public void updateBossOne(Creature creature){
+        timerBO += 1;
+        if(timerBO >= 100){
+            timerBO = 0;
+            bulletAnim = ResourceManager.bulletAnimationBossOne();
+            bullets.add(new Bullet(bulletAnim, 180, creature.getX() +bulletOffset, creature.getY()+creature.getHeight()/2-16));
+            map.addSprite(bullets.get(bullets.size()-1));
+        }
+        
+    }
 
 
     /**
-        Checks for Player collision with other Sprites. If
-        canKill is true, collisions with Creatures will kill
-        them.
+* Checks for Player collision with other Sprites. If
+* canKill is true, collisions with Creatures will kill
+* them.
+*
+* @param player Player
+* @param canKill If sprite can kill player
     */
     public void checkPlayerCollision(Player player, boolean canKill)
     {
@@ -623,21 +709,49 @@ public class GameManager extends GameCore {
                 soundManager.play(boopSound);
                 player.setY(badguy.getY() - player.getHeight());
                 player.jump(true);
-                badguy.setStateTwo();
-                score.setScore(badguy.getType());
+                badguy.setStateTwo(resourceManager.getCurrentM());
+                score.setScore(badguy.getType(), resourceManager.getCurrentM());
             }
             else {
                 // player dies!
-                player.setStateT();
+               // player.setStateT();
+                if(timeHurt >= 50){
+                    lives --;
+                    timeHurt = 0;
+                }
+                player.jump(true);
+                /*
+                player.setHurt();*/
                 
             }
         }
     }
 
-
     /**
-        Gives the player the speicifed power up and removes it
-        from the map.
+* Checks for Grub collision with bullets. Bullets kill grub.
+*
+* @param grub Grub
+* @param bullet Bullet
+*/
+    public void checkBulletCollision()
+    {
+        for(int i = 0; i<bullets.size(); i++){
+            Sprite collisionSprite = getSpriteCollision(bullets.get(i));
+            if(collisionSprite instanceof Grub || collisionSprite instanceof Fly){
+                Creature badguy = (Creature)collisionSprite;
+                map.removeSprite(bullets.get(i));
+                bullets.remove(i);
+                badguy.setStateOne(resourceManager.getCurrentM());
+                score.setScore(badguy.getType(), resourceManager.getCurrentM());
+            }
+        }
+    }
+    
+    /**
+* Gives the player the speicifed power up and removes it
+* from the map.
+*
+* @param powerUp Power up
     */
     public void acquirePowerUp(PowerUp powerUp) {
         // remove it from the map
@@ -654,72 +768,11 @@ public class GameManager extends GameCore {
         }
         else if (powerUp instanceof PowerUp.Goal) {
             // advance to next map
+            cont++;
             soundManager.play(prizeSound, new EchoFilter(2000, .7f), false);
             score.setScoreNewMap(resourceManager.getCurrentM());
             map = resourceManager.loadNextMap();
         }
-    }
-    /*
-    public boolean isItLeftScreen(Bullet e)
-    {
-        if(e.getX() > 0 && e.getX() < screen.getWidth() &&
-           e.getY() > 0 && e.getY() < screen.getHeight())
-            return false;
-        else
-            return true;
-    }*/
-    /*
-    public void DBullet(int x, int y){
-        renderer.drawBullet(g,x, y);
-    }
-    */
-    private void updateBullets()
-    {
-        for(int i = 0; i < bulletsList.size(); i++)
-        {
-            Bullet bullet = bulletsList.get(i);
-            
-            // Move the bullet.
-            bullet.Update();
-           /*
-            // Is left the screen?
-            if(isItLeftScreen(bullet)){
-                bulletsList.remove(i);
-                // Bullet have left the screen so we removed it from the list and now we can continue to the next bullet.
-                continue;
-            }*/
-            
-            // Did hit any enemy?
-            // Rectangle of the bullet image.
-            // Go trough all enemis.
-            Iterator it = map.getSprites();
-            while (it.hasNext()) {
-                Sprite otherSprite = (Sprite)it.next();
-                // Current enemy rectangle.
-                if (otherSprite instanceof Creature && !((Creature)otherSprite).isAlive()) {
-                    
-                }
-                Rectangle bulletRectangle = new Rectangle((int)bullet.getXS(), (int)bullet.getYS(),64, 64);
-            
-                // get the pixel location of the Sprites
-                int s2x = Math.round(otherSprite.getX());
-                int s2y = Math.round(otherSprite.getY());
-                
-                Rectangle otherRectangle = new Rectangle(s2x, s2y, otherSprite.getWidth(), otherSprite.getHeight());
-                // check if the two sprites' boundaries intersect
-                if(bulletRectangle.intersects(otherRectangle))
-                {
-                    // Bullet hit the enemy so we reduce his health.
-                    /*eh.health -= Bullet.damagePower;*/
-                    
-                    // Bullet was also destroyed so we remove it.
-                    bulletsList.remove(i);
-                    
-                    // That bullet hit enemy so we don't need to check other enemies.
-                    break;
-                }
-            }
-        }        
     }
 
 }

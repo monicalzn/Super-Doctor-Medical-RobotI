@@ -1,8 +1,12 @@
 package com.brackeen.javagamebook.sound;
 
 import java.io.*;
+import java.net.URL;
 import javax.sound.midi.*;
 
+/**
+* The MidiPlayer class manages the sequences of sound.
+*/
 public class MidiPlayer implements MetaEventListener {
 
     // Midi meta event
@@ -28,12 +32,15 @@ public class MidiPlayer implements MetaEventListener {
 
 
     /**
-        Loads a sequence from the file system. Returns null if
-        an error occurs.
+* Loads a sequence from the file system. Returns null if
+* an error occurs.
+* @param filename the name from the file system
+* @return the sequence, or <code>null</code> if an error occurs
     */
     public Sequence getSequence(String filename) {
         try {
-            return getSequence(new FileInputStream(filename));
+            URL urlSound = MidiPlayer.class.getResource(filename);
+            return getSequence(urlSound.openStream());
         }
         catch (IOException ex) {
             ex.printStackTrace();
@@ -43,8 +50,10 @@ public class MidiPlayer implements MetaEventListener {
 
 
     /**
-        Loads a sequence from an input stream. Returns null if
-        an error occurs.
+* Loads a sequence from an input stream. Returns null if
+* an error occurs.
+* @param is the sequence from the input stream
+* @return the sequence, or <code>null</code> if an error occurs
     */
     public Sequence getSequence(InputStream is) {
         try {

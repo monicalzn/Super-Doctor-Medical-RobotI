@@ -32,8 +32,9 @@ public abstract class SoundFilter{
 
 
     /**
-        Filters an array of samples. Samples should be in
-        16-bit, signed, little-endian format.
+* Filters an array of samples. Samples should be in
+* 16-bit, signed, little-endian format.
+* @param samples array of samples
     */
     public void filter(byte[] samples) {
         filter(samples, 0, samples.length);
@@ -41,18 +42,24 @@ public abstract class SoundFilter{
 
 
     /**
-        Filters an array of samples. Samples should be in
-        16-bit, signed, little-endian format. This method
-        should be implemented by subclasses.
+* Filters an array of samples. Samples should be in
+* 16-bit, signed, little-endian format. This method
+* should be implemented by subclasses.
+* @param samples the sound samples
+* @param offset where the sound samples begin
+* @param length the amount of sound samples
     */
     public abstract void filter(
         byte[] samples, int offset, int length);
 
 
     /**
-        Convenience method for getting a 16-bit sample from a
-        byte array. Samples should be in 16-bit, signed,
-        little-endian format.
+* Convenience method for getting a 16-bit sample from a
+* byte array. Samples should be in 16-bit, signed,
+* little-endian format.
+* @param buffer byte array
+* @param position position of byte
+* @return 16-bit sample
     */
     public static short getSample(byte[] buffer, int position) {
         return (short)(
@@ -62,9 +69,12 @@ public abstract class SoundFilter{
 
 
     /**
-        Convenience method for setting a 16-bit sample in a
-        byte array. Samples should be in 16-bit, signed,
-        little-endian format.
+* Convenience method for setting a 16-bit sample in a
+* byte array. Samples should be in 16-bit, signed,
+* little-endian format.
+* @param buffer byte array
+* @param position position of byte
+* @param sample the sample
     */
     public static void setSample(byte[] buffer, int position,
         short sample)

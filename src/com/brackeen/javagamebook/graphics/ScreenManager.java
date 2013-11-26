@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 */
 public class ScreenManager {
 
-    private GraphicsDevice device;
+    public static GraphicsDevice device;
 
     /**
         Creates a new ScreenManager object.
@@ -24,8 +24,9 @@ public class ScreenManager {
 
 
     /**
-        Returns a list of compatible display modes for the
-        default device on the system.
+* Returns a list of compatible display modes for the
+* default device on the system.
+* @return the display modes for the device
     */
     public DisplayMode[] getCompatibleDisplayModes() {
         return device.getDisplayModes();
@@ -33,8 +34,10 @@ public class ScreenManager {
 
 
     /**
-        Returns the first compatible mode in a list of modes.
-        Returns null if no modes are compatible.
+* Returns the first compatible mode in a list of modes.
+* Returns null if no modes are compatible.
+* @param modes an array of display modes
+* @return first compatible mode, or <code>null</code> if no compatibility
     */
     public DisplayMode findFirstCompatibleMode(
         DisplayMode modes[])
@@ -54,7 +57,8 @@ public class ScreenManager {
 
 
     /**
-        Returns the current display mode.
+* Returns the current display mode.
+* @return the display mode for the device
     */
     public DisplayMode getCurrentDisplayMode() {
         return device.getDisplayMode();
@@ -62,13 +66,16 @@ public class ScreenManager {
 
 
     /**
-        Determines if two display modes "match". Two display
-        modes match if they have the same resolution, bit depth,
-        and refresh rate. The bit depth is ignored if one of the
-        modes has a bit depth of DisplayMode.BIT_DEPTH_MULTI.
-        Likewise, the refresh rate is ignored if one of the
-        modes has a refresh rate of
-        DisplayMode.REFRESH_RATE_UNKNOWN.
+* Determines if two display modes "match". Two display
+* modes match if they have the same resolution, bit depth,
+* and refresh rate. The bit depth is ignored if one of the
+* modes has a bit depth of DisplayMode.BIT_DEPTH_MULTI.
+* Likewise, the refresh rate is ignored if one of the
+* modes has a refresh rate of
+* DisplayMode.REFRESH_RATE_UNKNOWN.
+* @param mode1 the first mode to be compared
+* @param mode2 the second mode to be compared
+* @return <code>true</code> if they match, or <code>false</code> if not
     */
     public boolean displayModesMatch(DisplayMode mode1,
         DisplayMode mode2)
@@ -148,11 +155,12 @@ public class ScreenManager {
 
 
     /**
-        Gets the graphics context for the display. The
-        ScreenManager uses double buffering, so applications must
-        call update() to show any graphics drawn.
-        <p>
-        The application must dispose of the graphics object.
+* Gets the graphics context for the display. The
+* ScreenManager uses double buffering, so applications must
+* call update() to show any graphics drawn.
+* <p>
+* The application must dispose of the graphics object.
+* @return graphic if the window isn't null, or <code>null</code> if it is
     */
     public Graphics2D getGraphics() {
         Window window = device.getFullScreenWindow();
@@ -184,8 +192,9 @@ public class ScreenManager {
 
 
     /**
-        Returns the window currently used in full screen mode.
-        Returns null if the device is not in full screen mode.
+* Returns the window currently used in full screen mode.
+* Returns null if the device is not in full screen mode.
+* @return window used in full screen mode
     */
     public JFrame getFullScreenWindow() {
         return (JFrame)device.getFullScreenWindow();
@@ -193,9 +202,10 @@ public class ScreenManager {
 
 
     /**
-        Returns the width of the window currently used in full
-        screen mode. Returns 0 if the device is not in full
-        screen mode.
+* Returns the width of the window currently used in full
+* screen mode. Returns 0 if the device is not in full
+* screen mode.
+* @return width of window if not null, or <code>0</code> if null
     */
     public int getWidth() {
         Window window = device.getFullScreenWindow();
@@ -209,9 +219,10 @@ public class ScreenManager {
 
 
     /**
-        Returns the height of the window currently used in full
-        screen mode. Returns 0 if the device is not in full
-        screen mode.
+* Returns the height of the window currently used in full
+* screen mode. Returns 0 if the device is not in full
+* screen mode.
+* @return height of window if not null, or <code>0</code> if null
     */
     public int getHeight() {
         Window window = device.getFullScreenWindow();
@@ -237,7 +248,11 @@ public class ScreenManager {
 
 
     /**
-        Creates an image compatible with the current display.
+* Creates an image compatible with the current display.
+* @param w width of the image
+* @param h height of the image
+* @param transparancy transparency of the image
+* @return compatible image
     */
     public BufferedImage createCompatibleImage(int w, int h,
         int transparancy)

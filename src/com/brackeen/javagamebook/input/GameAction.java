@@ -30,7 +30,8 @@ public class GameAction {
     private int state;
 
     /**
-        Create a new GameAction with the NORMAL behavior.
+* Create a new GameAction with the NORMAL behavior.
+* @param name the name of the GameAction
     */
     public GameAction(String name) {
         this(name, NORMAL);
@@ -38,7 +39,9 @@ public class GameAction {
 
 
     /**
-        Create a new GameAction with the specified behavior.
+* Create a new GameAction with the specified behavior.
+* @param name the name of the GameAction
+* @param behavior the behavior of the GameAction
     */
     public GameAction(String name, int behavior) {
         this.name = name;
@@ -48,7 +51,8 @@ public class GameAction {
 
 
     /**
-        Gets the name of this GameAction.
+* Gets the name of this GameAction.
+* @return the name of the GameAction
     */
     public String getName() {
         return name;
@@ -84,8 +88,9 @@ public class GameAction {
 
 
     /**
-        Signals that the key was pressed a specified number of
-        times, or that the mouse move a spcified distance.
+* Signals that the key was pressed a specified number of
+* times, or that the mouse move a specified distance.
+* @param amount times or distance a key was pressed or the mouse was moved
     */
     public synchronized void press(int amount) {
         if (state != STATE_WAITING_FOR_RELEASE) {
@@ -105,8 +110,9 @@ public class GameAction {
 
 
     /**
-        Returns whether the key was pressed or not since last
-        checked.
+* Returns whether the key was pressed or not since last
+* checked.
+* @return true as long as the key is pressed
     */
     public synchronized boolean isPressed() {
         return (getAmount() != 0);
@@ -114,9 +120,10 @@ public class GameAction {
 
 
     /**
-        For keys, this is the number of times the key was
-        pressed since it was last checked.
-        For mouse movement, this is the distance moved.
+* For keys, this is the number of times the key was
+* pressed since it was last checked.
+* For mouse movement, this is the distance moved.
+* @return times or distance a key was pressed or the mouse was moved
     */
     public synchronized int getAmount() {
         int retVal = amount;

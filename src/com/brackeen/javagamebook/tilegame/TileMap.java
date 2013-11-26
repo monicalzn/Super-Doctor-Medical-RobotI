@@ -18,10 +18,13 @@ public class TileMap {
     private LinkedList sprites;
     private Sprite player;
     private Sprite ship;
+    private Sprite playerBuster;
 
     /**
-        Creates a new TileMap with the specified width and
-        height (in number of tiles) of the map.
+* Creates a new TileMap with the specified width and
+* height (in number of tiles) of the map.
+* @param width
+* @param height
     */
     public TileMap(int width, int height) {
         tiles = new Image[width][height];
@@ -30,7 +33,8 @@ public class TileMap {
 
 
     /**
-        Gets the width of this TileMap (number of tiles across).
+* Gets the width of this TileMap (number of tiles across).
+* @return int
     */
     public int getWidth() {
         return tiles.length;
@@ -38,7 +42,8 @@ public class TileMap {
 
 
     /**
-        Gets the height of this TileMap (number of tiles down).
+* Gets the height of this TileMap (number of tiles down).
+* @return int
     */
     public int getHeight() {
         return tiles[0].length;
@@ -46,9 +51,12 @@ public class TileMap {
 
 
     /**
-        Gets the tile at the specified location. Returns null if
-        no tile is at the location or if the location is out of
-        bounds.
+* Gets the tile at the specified location. Returns null if
+* no tile is at the location or if the location is out of
+* bounds.
+* @param x
+* @param y
+* @return Image
     */
     public Image getTile(int x, int y) {
         if (x < 0 || x >= getWidth() || y < 0 || y >= getHeight()){
@@ -61,7 +69,10 @@ public class TileMap {
 
 
     /**
-        Sets the tile at the specified location.
+* Sets the tile at the specified location.
+* @param x
+* @param y
+* @param tile
     */
     public void setTile(int x, int y, Image tile) {
         tiles[x][y] = tile;
@@ -69,34 +80,48 @@ public class TileMap {
 
 
     /**
-        Gets the player Sprite.
+* Gets the player Sprite.
+* @return
     */
     public Sprite getPlayer(int gplay) {
         if(gplay == 1){
             return ship;
         }
-        else{
+        else if(gplay == 2){
             return player;            
+        }
+        else{
+            return playerBuster;
         }
     }
 
-
     /**
-        Sets the player Sprite.
+* Sets the player Sprite.
+* @param playerBuster
+    */
+    public void setPlayerBuster(Sprite player) {
+        this.playerBuster = player;
+    }
+        
+    /**
+* Sets the player Sprite.
+* @param player
     */
     public void setPlayer(Sprite player) {
         this.player = player;
     }
 
-    /**
-        Sets the player Sprite.
+     /**
+* Sets the player Sprite.
+* @param Ship
     */
     public void setShip(Sprite Ship) {
         this.ship = Ship;
     }
 
     /**
-        Adds a Sprite object to this map.
+* Adds a Sprite object to this map.
+* @param sprite
     */
     public void addSprite(Sprite sprite) {
         sprites.add(sprite);
@@ -104,7 +129,8 @@ public class TileMap {
 
 
     /**
-        Removes a Sprite object from this map.
+* Removes a Sprite object from this map.
+* @param sprite
     */
     public void removeSprite(Sprite sprite) {
         sprites.remove(sprite);
@@ -112,8 +138,9 @@ public class TileMap {
 
 
     /**
-        Gets an Iterator of all the Sprites in this map,
-        excluding the player Sprite.
+* Gets an Iterator of all the Sprites in this map,
+* excluding the player Sprite.
+* @return
     */
     public Iterator getSprites() {
         return sprites.iterator();

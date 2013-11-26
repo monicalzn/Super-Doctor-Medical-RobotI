@@ -7,17 +7,37 @@ import com.brackeen.javagamebook.graphics.Animation;
 */
 public class Fly extends Creature {
     private int type = 2;
-
-    public Fly(Animation left, Animation right, Animation deadLeft, Animation deadRight)
+ /**
+* Constructor
+* @param left
+* @param right
+* @param deadLeft
+* @param deadRight
+* @param standingLeft
+* @param standingRight
+* @param jumpingLeft
+* @param jumpingRight
+*/
+    public Fly(Animation left, Animation right,
+        Animation deadLeft, Animation deadRight, Animation standingLeft, Animation standingRight,
+        Animation jumpingLeft, Animation jumpingRight)
     {
-        super(left, right, deadLeft, deadRight);
+        super(left, right, deadLeft, deadRight, standingLeft, standingRight, jumpingLeft, jumpingRight);
     }
 
+    /**
+* Get Max Speed
+* @return float
+*/
 
     public float getMaxSpeed() {
         return 0.1f;
     }
 
+    /**
+* Is it alive/flying
+* @return boolean
+*/
 
     public boolean isFlying() {
         return isAlive();

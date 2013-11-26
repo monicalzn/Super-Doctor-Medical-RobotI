@@ -27,10 +27,11 @@ public class EchoFilter extends SoundFilter {
 
 
     /**
-        Gets the remaining size, in bytes, of samples that this
-        filter can echo after the sound is done playing.
-        Ensures that the sound will have decayed to below 1%
-        of maximum volume (amplitude).
+* Gets the remaining size, in bytes, of samples that this
+* filter can echo after the sound is done playing.
+* Ensures that the sound will have decayed to below 1%
+* of maximum volume (amplitude).
+* @return the remaining size of samples
     */
     public int getRemainingSize() {
         float finalDecay = 0.01f;

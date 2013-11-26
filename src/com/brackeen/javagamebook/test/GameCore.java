@@ -26,7 +26,7 @@ public abstract class GameCore {
     };
 
     private boolean isRunning;
-    protected ScreenManager screen;
+    public static ScreenManager screen;
 
     /**
         Signals the game loop that it's time to quit
@@ -128,8 +128,9 @@ public abstract class GameCore {
 
     
     /**
-        Updates the state of the game/animation based on the
-        amount of elapsed time that has passed.
+*Updates the state of the game/animation based on the
+*amount of elapsed time that has passed.
+* @param elapsedTime Elapsed time that has passed
     */
     public void update(long elapsedTime) {
         // do nothing
@@ -137,8 +138,9 @@ public abstract class GameCore {
 
 
     /**
-        Draws to the screen. Subclasses must override this
-        method.
+*Draws to the screen. Subclasses must override this
+*method.
+* @param g Graphics2D
     */
     public abstract void draw(Graphics2D g);
 }

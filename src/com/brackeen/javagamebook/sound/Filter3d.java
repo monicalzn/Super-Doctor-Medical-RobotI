@@ -22,11 +22,12 @@ public class Filter3d extends SoundFilter {
     private float lastVolume;
 
     /**
-        Creates a new Filter3d object with the specified source
-        and listener Sprites. The Sprite's position can be
-        changed while this filter is running.
-        <p> The maxDistance parameter is the maximum distance
-        that the sound can be heard.
+* Creates a new Filter3d object with the specified source
+* and listener Sprites. The Sprite's position can be
+* changed while this filter is running.
+* @param source the specified source
+* @param listener the specified listener Sprites
+* @param maxDistance the maximum distance that the sound can be heard
     */
     public Filter3d(Sprite source, Sprite listener,
         int maxDistance)

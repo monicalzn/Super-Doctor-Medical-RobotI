@@ -1,5 +1,6 @@
 package com.brackeen.javagamebook.tilegame;
 
+import com.brackeen.javagamebook.graphics.ScreenManager;
 import java.awt.*;
 import java.util.Iterator;
 
@@ -12,6 +13,7 @@ import java.io.*;
 import com.brackeen.javagamebook.tilegame.*;
 
 import com.brackeen.javagamebook.graphics.Sprite;
+import com.brackeen.javagamebook.tilegame.sprites.Bullet;
 import com.brackeen.javagamebook.tilegame.sprites.Creature;
 import com.brackeen.javagamebook.tilegame.score;
 
@@ -31,23 +33,28 @@ import com.brackeen.javagamebook.tilegame.score;
 */
 public class TileMapRenderer {
     
-    
-
     private static final int TILE_SIZE = 64;
     // the size in bits of the tile
     // Math.pow(2, TILE_SIZE_BITS) == TILE_SIZE
     private static final int TILE_SIZE_BITS = 6;
+
+    public static int offsetX;
 
     private Image background;
     private Image pause;
     private Image instructions;
     private Image StartImg;
     private Image Credits;
-    private Image Story[] = new Image[5];
+    private Image Story[] = new Image[10];
     private Image Bullet;
+    private Image GameOver;
+    private Image Win;
+    
     private int cont = 0;
     /**
-        Converts a pixel position to a tile position.
+* Converts a pixel position to a tile position.
+* @param pixels
+* @return int
     */
     public static int pixelsToTiles(float pixels) {
         return pixelsToTiles(Math.round(pixels));
@@ -55,7 +62,9 @@ public class TileMapRenderer {
 
 
     /**
-        Converts a pixel position to a tile position.
+* Converts a pixel position to a tile position.
+* @param pixels
+* @return int
     */
     public static int pixelsToTiles(int pixels) {
         // use shifting to get correct values for negative pixels
@@ -68,7 +77,9 @@ public class TileMapRenderer {
 
 
     /**
-        Converts a tile position to a pixel position.
+* Converts a tile position to a pixel position.
+* @param numTiles
+* @return int
     */
     public static int tilesToPixels(int numTiles) {
         // no real reason to use shifting here.
@@ -82,7 +93,8 @@ public class TileMapRenderer {
 
 
     /**
-        Sets the background to draw.
+* Sets the background to draw.
+* @param background
     */
     public void setBackground(Image background) {
         this.background = background;
@@ -101,11 +113,17 @@ public class TileMapRenderer {
         this.instructions = inst;
     }
 
+    public void setWin(Image win) {
+        this.Win = win;
+    }
     public void setStart(Image start){
         this.StartImg = start;
     }
     public void setCredits(Image credit){
         this.Credits = credit;
+    }
+    public void setGameOver(Image game){
+        this.GameOver = game;
     }
     public void setStory(Image st){
         Story[cont] = st;
@@ -115,9 +133,13 @@ public class TileMapRenderer {
         this.Bullet = bull;
     }
     /**
-        Draws the specified TileMap.
+* Draws the specified TileMap.
+* @param g
+* @param map
+* @param screenWidth
+* @param screenHeight
     */
-    public void draw(Graphics2D g, TileMap map, int screenWidth, int screenHeight, int currMap, int score)
+    public void draw(Graphics2D g, TileMap map, int screenWidth, int screenHeight, int currMap, int score, int lives)
     {
         Sprite player = map.getPlayer(currMap);
         int mapWidth = tilesToPixels(map.getWidth());
@@ -164,9 +186,9 @@ public class TileMapRenderer {
             }
             
         }
-        g.setFont(new Font("Arial", Font.BOLD, 26));
+        g.setFont(new Font("Arial", Font.BOLD, 24));
         g.setColor(Color.WHITE);
-        g.drawString( " | "  + score + " |", 50, 50);
+        g.drawString( "score: "  + score + " |lives left: " + lives, 50, 50);
 
         // draw player
         g.drawImage(player.getImage(),
@@ -178,8 +200,15 @@ public class TileMapRenderer {
         Iterator i = map.getSprites();
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
-            int x = Math.round(sprite.getX()) + offsetX;
-            int y = Math.round(sprite.getY()) + offsetY;
+            int x;
+            int y;
+            if(sprite instanceof Bullet){
+                x = Math.round(sprite.getX()) + offsetX;
+                y = Math.round(sprite.getY()) + offsetY;
+            }else{
+               x = Math.round(sprite.getX()) + offsetX;
+               y = Math.round(sprite.getY()) + offsetY;
+            }
             g.drawImage(sprite.getImage(), x, y, null);
 
             // wake up the creature when it's on screen
@@ -188,6 +217,9 @@ public class TileMapRenderer {
             {
                 ((Creature)sprite).wakeUp();
             }
+        }
+        if(lives <= 0){
+            g.drawImage(GameOver,0, 0, null);
         }
     }
     
@@ -210,30 +242,20 @@ public class TileMapRenderer {
             g.drawImage(StartImg,0, 0, null);
             g.setFont(new Font("Arial", Font.BOLD, 26));
             g.setColor(Color.WHITE);
-            g.drawString("Press Enter To Start!", screenWidth/3, screenHeight/3);
-        }
-        if(!Start){
-            g.setFont(new Font("Arial", Font.BOLD, 26));
-            g.setColor(Color.WHITE);
-            g.drawString("Super Doctor Medical Robot: Inside Your Body!", 150,75);
-            g.drawString("Press SPACE to start Game!", 150,101);
-            g.drawString("Press I to see the Instructions", 150,127);
-            g.drawString("Press C to see the Credits", 150,153);
+            g.drawString("Super Doctor Medical Robot: Inside Your Body! ", screenWidth/6, screenHeight-100);
+            g.drawString("Press Enter To Start!", screenWidth/3, screenHeight-50);
         }
     }
     
     public void drawPause(Graphics2D g, TileMap map, int screenWidth, int screenHeight, int currMap, int score)
     {
-        g.drawImage(pause,screenWidth/3, screenHeight/3, null);
-        g.setFont(new Font("Arial", Font.BOLD, 26));
-        g.setColor(Color.WHITE);
-        g.drawString( " | "  + score + " |", 50, 50);
+        g.drawImage(pause,0, 0, null);
     }
     
     public void drawInstCre(Graphics2D g, TileMap map, int screenWidth, int screenHeight, boolean inst, boolean credit)
     {
         if(inst){
-            g.drawImage(instructions,0, 0, null);
+            g.drawImage(instructions,(screenWidth/3)-50, (screenHeight/3)-40, null);
         }
         else{
             g.drawImage(Credits,0, 0, null);
@@ -245,6 +267,12 @@ public class TileMapRenderer {
     }
     public void drawBullet(Graphics2D g, int x, int y){
         g.drawImage(Bullet,x, y, null);
+    }
+    public void GameOver(Graphics2D g, TileMap map, int screenWidth, int screenHeight){
+        g.drawImage(GameOver,0, 0, null);
+    }
+    public void Win(Graphics2D g, TileMap map, int screenWidth, int screenHeight){
+        g.drawImage(Win,0, 0, null);
     }
 }
 

@@ -17,8 +17,10 @@ public class FilteredSoundStream extends FilterInputStream {
     private int remainingSize;
 
     /**
-        Creates a new FilteredSoundStream object with the
-        specified InputStream and SoundFilter.
+* Creates a new FilteredSoundStream object with the
+* specified InputStream and SoundFilter.
+* @param in the specified InputStream
+* @param soundFilter the specified soundFilter
     */
     public FilteredSoundStream(InputStream in,
         SoundFilter soundFilter)
@@ -30,8 +32,13 @@ public class FilteredSoundStream extends FilterInputStream {
 
 
     /**
-        Overrides the FilterInputStream method to apply this
-        filter whenever bytes are read
+* Overrides the FilterInputStream method to apply this
+* filter whenever bytes are read.
+* @param samples the sound samples
+* @param offset where the sound samples begin
+* @param length the amount of sound samples
+* @return remaining length, or -1
+* @throws IOException
     */
     public int read(byte[] samples, int offset, int length)
         throws IOException
