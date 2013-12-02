@@ -8,24 +8,13 @@
 #   *       Goal
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
-#   3       Boss 1
-#   4       GM2 (grub)
-#   5       FM2 (fly)
-#   6       Boss 2
-#   7       GM3 (grub)
-#   8       FM3 (fly)
-#   9       Boss
+#   3       Boss
+                                                                 
 
-
-                                                  
-                                                            8
-                   7                                                     7
- GHHHHHHHHHHHHHHHHHHHHI                                GHHHHHHHHHHHHHHHHHHHHHHHI      EF   
-                                8                  7                                  CD
-                                         GHHHHHHHHHHHHHI                    EF        CD
-                                                                  8         CD        CD
-                             8     7                                        CD    8   CD
-                      GHHHHHHHHHHHHHHHHHHHI        EAAF                     CD        CD
-              7                                    CAAD             7       CD        CD                        9
-GHHHHHHHHHHHHHHHI                          9  *     GMAALHHHHHHHHHHHHHHHHHHHHHMLI      GMLBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB    
-                                 GHHHHHHHHHHHHHHHHHHHHHI                                                      CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA                                     
+                                      EBHHHHHHHHHHI
+                                     EMD                                                            N    N    N    N    EBBBBBBBBBBBBBBBBBF
+                                    EMAD             GI                         EBBBBBBBBBBBBBBBF                       CAAAAAAAAAAAAAAAAAD
+                  EBBBBBBBBBBBBBBBBBMAAD                          EBBBBBBBBBBBBBMAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAAD
+                 EMAAAAAAAAAAAAAAAAAAAAD                          CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAAD
+                EMAAAAAAAAAAAAAAAAAAAAAD                  EF      CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAAD
+BBBBBBBBBBBBBBBBMAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBMLBBBBBBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBB

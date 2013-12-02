@@ -551,7 +551,11 @@ public class GameManager extends GameCore {
                     return;
                 }
 
-                
+                if(player.getY() > screen.getHeight()){
+                    player.setY(0);
+                    player.setX(0);
+                    lives--;
+                }
                 // update player
                 updateCreature(player, elapsedTime);
                 player.update(elapsedTime);
@@ -613,10 +617,7 @@ public class GameManager extends GameCore {
     */
     private void updateCreature(Creature creature, long elapsedTime)
     {
-        /*if(creature.getType() == 3){
-            updateBossOne(creature);
-        }*/
-
+        
         // apply gravity
         if (!creature.isFlying()) {
             creature.setVelocityY(creature.getVelocityY() + GRAVITY * elapsedTime);
@@ -760,6 +761,7 @@ public class GameManager extends GameCore {
 
         if (powerUp instanceof PowerUp.Star) {
             // do something here, like give the player points
+            score.setScoreUp(5);
             soundManager.play(prizeSound);
         }
         else if (powerUp instanceof PowerUp.Music) {

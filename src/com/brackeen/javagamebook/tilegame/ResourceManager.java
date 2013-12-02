@@ -654,18 +654,18 @@ public class ResourceManager {
         Image player6, Image player7, Image player8, Image player9, Image player10, Image player11, Image player12)
     {
         Animation anim = new Animation();
-        anim.addFrame(player1, 150);
-        anim.addFrame(player2, 150);
-        anim.addFrame(player3, 150);
-        anim.addFrame(player4, 150);
-        anim.addFrame(player5, 250);
-        anim.addFrame(player6, 150);
-        anim.addFrame(player7, 150);
-        anim.addFrame(player8, 150);
-        anim.addFrame(player9, 150);
-        anim.addFrame(player10, 150);
-        anim.addFrame(player11, 150);
-        anim.addFrame(player12, 150);
+        anim.addFrame(player1, 100);
+        anim.addFrame(player2, 100);
+        anim.addFrame(player3, 100);
+        anim.addFrame(player4, 100);
+        anim.addFrame(player5, 100);
+        anim.addFrame(player6, 100);
+        anim.addFrame(player7, 100);
+        anim.addFrame(player8, 100);
+        anim.addFrame(player9, 100);
+        anim.addFrame(player10, 100);
+        anim.addFrame(player11, 100);
+        anim.addFrame(player12, 100);
         return anim;
     }
 

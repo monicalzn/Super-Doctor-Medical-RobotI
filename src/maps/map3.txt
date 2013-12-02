@@ -8,21 +8,13 @@
 #   *       Goal
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
-#   3       Boss 1
-#   4       GM2 (grub)
-#   5       FM2 (fly)
-#   6       Boss 2
-#   7       GM3 (grub)
-#   8       FM3 (fly)
-#   9       Boss
+#   3       Boss
                                                                  
 
-
-                  5                         
-  GHHI       5         GHHHHHI      GHHHHI                       5                    5            5                  6
-                                                           5      EF            5
-                                   5                 2EF          CD   5                    5 EF
-                 EF                                 EMD     EF    CD *                         CD
-        EF  4    CD       4           4            EMAD     CD    CD          4         4 EF  CD                      
-BBBBBBBBMLBBBBBBBMLBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBMAALBBBBBMLBBBBMLBBBBBBBBBBBBBBBBBBBBBBMLBBMLBBBBBBBBBBBBBBBBBBBBBBBBBBMA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        N                                                                                                                                                                  GI 
+GI               N                                                                                  EBBBBBBBBBBBBBBBBBF               EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF
+            N                                                                                   N   CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+    N                                                                                 N     N       CAAAAAAAAAAAAAAAAAD       N       CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+                    N                                      GI    GI    GI     EF                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+                                                                              CD         N          CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBF
+                        BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                    CD                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBB	

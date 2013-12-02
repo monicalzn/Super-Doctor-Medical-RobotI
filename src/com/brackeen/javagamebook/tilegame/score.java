@@ -65,4 +65,8 @@ public class score {
         }
     }
     
+    public void setScoreUp(int score){
+        points += score;
+    }
+    
 }

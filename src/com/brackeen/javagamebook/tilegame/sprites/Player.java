@@ -7,7 +7,7 @@ import com.brackeen.javagamebook.graphics.Animation;
 */
 public class Player extends Creature {
 
-    private static final float JUMP_SPEED = -.95f;
+    private static final float JUMP_SPEED = -.85f;
 
     public static boolean onGround;
     
@@ -136,7 +136,7 @@ public class Player extends Creature {
 */
     
     public float getMaxSpeed() {
-        return 0.4f;
+        return 0.35f;
     }
 
 }
