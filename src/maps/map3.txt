@@ -10,11 +10,11 @@
 #   2       Bad Guy 2 (fly)
 #   3       Boss
                                                                  
-
-                                                                                         A                                                                                GI 
-GI      A        A                                                                                  EBBBBBBBBBBBBBBBBBF               EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF
-    *       A                                                                     A                 CAAAAAAAAAAAAAAAAAD    A      A   CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
-    A                                                                                 A     A  A    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
-                    A                                     GHI    GI   GI      EF                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
-                                                                              CD         A          CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBF *
-                          EBBBBBBBBBBBBBBBBBBBBBBBBBBBF                       CD                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBB	
+                                                                                                                           o    5 o         5oo   oo    5        oooo   5     o o o o
+            5    o                   5         5                            5        oo  T        oo  4  4 4   4  4 4      o      o      4         4          4              GI 
+GI      T     5  T         5                                   5                         o   5    o EBBBBBBBBBBBBBBBBBF    o      o   EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF
+        5   T                 5                   5           oo   oo      oo     T      o        T CAAAAAAAAAAAAAAAAAD    T      T   CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                     6
+    T           5   o           ooo       5   ooo          4          4               T  o  T  T    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAADooo       5
+                    T                5    o               GHI    GI   GHI     EF         o      o   CAAAAAAAAAAAAAAAAAD          5    CAAAAAAAAAAAAAAAAAAAAAAAAAAAAADooo4         4
+                               4    oo 4    4     4 oo                        CD         T          CAAAAAAAAAAAAAAAAAD    5          CAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBF *
+                5         EBBBBBBBBBBBBBBBBBBBBBBBBBBBF                       CD                o   CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBB	

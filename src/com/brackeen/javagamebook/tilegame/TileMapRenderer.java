@@ -242,8 +242,6 @@ public class TileMapRenderer {
             g.drawImage(StartImg,0, 0, null);
             g.setFont(new Font("Arial", Font.BOLD, 26));
             g.setColor(Color.WHITE);
-            g.drawString("Super Doctor Medical Robot: Inside Your Body! ", screenWidth/6, screenHeight-100);
-            g.drawString("Press Enter To Start!", screenWidth/3, screenHeight-50);
         }
     }
     
@@ -268,8 +266,10 @@ public class TileMapRenderer {
     public void drawBullet(Graphics2D g, int x, int y){
         g.drawImage(Bullet,x, y, null);
     }
-    public void GameOver(Graphics2D g, TileMap map, int screenWidth, int screenHeight){
+    public void GameOver(Graphics2D g, TileMap map, int screenWidth, int screenHeight, int score){
         g.drawImage(GameOver,0, 0, null);
+        g.setFont(new Font("Arial", Font.BOLD, 26));
+        g.drawString("Score final "+ score, screenWidth/3, screenHeight-100);
     }
     public void Win(Graphics2D g, TileMap map, int screenWidth, int screenHeight){
         g.drawImage(Win,0, 0, null);

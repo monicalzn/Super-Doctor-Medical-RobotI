@@ -130,7 +130,7 @@ public class GameManager extends GameCore {
         
         menu = new TileMapRenderer();
         menu.setBackground(resourceManager.loadImage("Menu.png"));
-        menu.setStart(resourceManager.loadImage("conceptcorrectobien.png"));
+        menu.setStart(resourceManager.loadImage("portada1.png"));
 
         // load first map
         map = resourceManager.loadNextMap();
@@ -368,7 +368,7 @@ public class GameManager extends GameCore {
             renderer.drawStory(g, map, screen.getWidth(), screen.getHeight(), Inext);
         }
         else if(lives <= 0 ){
-            renderer.GameOver(g, map, screen.getWidth(), screen.getHeight());
+            renderer.GameOver(g, map, screen.getWidth(), screen.getHeight(), score.getScore());
             
             //renderer.drawInstCre(g, map, screen.getWidth(), screen.getHeight(), instructions, Bcredits);
         }else if(cont == 4){
@@ -544,10 +544,10 @@ public class GameManager extends GameCore {
                 // player is dead! start map over
                 if (player.getState() >= Creature.STATE_DEAD) {
                     HitBool = false;
-                    Menu = true;
-                    initSpecial();
+                    //Menu = true;
+                    //initSpecial();
                     player.setState(0);
-                    map = resourceManager.reloadMap();
+                    //map = resourceManager.reloadMap();
                     return;
                 }
 
@@ -775,6 +775,7 @@ public class GameManager extends GameCore {
             soundManager.play(prizeSound, new EchoFilter(2000, .7f), false);
             score.setScoreNewMap(resourceManager.getCurrentM());
             map = resourceManager.loadNextMap();
+            lives = 4;
         }
     }
 

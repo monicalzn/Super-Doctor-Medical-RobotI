@@ -10,13 +10,13 @@
 #   2       Bad Guy 2 (fly)
 #   3       Boss
 
-  CAAAAAAAAAAAAAAAAAAAAD                                                             EBBBBBBBBBBF  CAAAAAAAAAAAAAAAAAD      R     R   R  R
-  CAAAAAAAAAAAAAAAAAAAAD    ooooooooooooooooooooooooooooo                           EMAAAAAAAAAAF  CAAAAAAAAAAAAAAAAAD      R     R   R  R
-  CAAAAAAAAAAAAAAAAAAAAD          ooooooooooooooooooo  EF                          EMAAAAAAAAAAAF  CAAAAAAAAAAAAAAAAAD      S     R   R  R                      9
-  CAAAAAAAAAAAAAAAAAAAAD                              EMD                         EMAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD            R   R  R      EBBBBBBBBBBBBBBAAAF
-  CAAAAAAAAAAAAAAAAAAAAD      EBBBBBBBBBBBBBBBBBBBBBBBMAD               EBBBBBBBBBMAAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD         Q  R   R  S      CAAAAAAAAAAAAAAAAAD
-  CAAAAAAAAAAAAAAAAAAAAD      NPPPPPPPPPPPPPPPPPPPPPPPPPO            EBBMAAAAAAAAAAAAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD         R  R   S     A   CAAAAAAAAAAAAAAAAAD
-  NPPPPPPPPPPPPPPPPPPPPO    A         ooooooooooooooooooo           EMAAAAAAAAAAAAAAAAAAAAAAAAAAD  NPPPPPPPPPPPPPPPPPO     Q   R  S             CAAAAAAAAAAAAAAAAAD
-                                    oooooooooooooooooooo         EBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                          R   R         Q      CAAAAAAAAAAAAAAAAAD    A
-                                          oooooooo              EMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD   o   o   o   o   o  o A R   R      Q  R      CAAAAAAAAAAAAAAAAAD         *
-BBF  EF  EBBF  EBF  EBF  EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF  A  oEBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD A  EBBBBBBBBBBBBBBBBF    R   R  Q   R  R      CAAAAAAAAAAAAAAAAAD         G
+  CAAAAAAAAAAAAAAAAAAAAD                                Q                            EBBBBBBBBBBD  CAAAAAAAAAAAAAAAAAD      R      R   R  R    8                8                   
+  CAAAAAAAAAAAAAAAAAAAAD    oooooooooooooooooooooooooooED                  8        EMAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD      R      R   R  R              8            8  EBBBBBF         
+  CAAAAAAAAAAAAAAAAAAAAD          ooooooooooooooooooo  CD                          EMAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD      S    8 R   R  R        7      7      7       CAAAAAD          
+  CAAAAAAAAAAAAAAAAAAAAD             7         7      EMD         8      7     7  EMAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD             R   R  R      EBBBBBBBBBBBBBBAAAF  T  CAAAAAD          EF
+  CAAAAAAAAAAAAAAAAAAAAD      EBBBBBBBBBBBBBBBBBBBBBBBMAD             7 EBBBBBBBBBMAAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD       8 Q   R   R  S      CAAAAAAAAAAAAAAAAAD     CAAAAAD         EMD 
+  NPPPPPPPPPPPPPPPPPPPPO      NPPPPPPPPPPPPPPPPPPPPPPPPPO 8          EBBMAAAAAAAAAAAAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD         R   R   S      7  CAAAAAAAAAAAAAAAAAD     CAAAAAD     7 9 CAD
+                            T         ooooooooooooooooooo         7 EMAAAAAAAAAAAAAAAAAAAAAAAAAAD  NPPPPPPPPPPPPPPPPPO     Q   R   S          T  CAAAAAAAAAAAAAAAAAD     CAAAAALBBBBBBAAAMAD
+   oo  oo    oo   oo                oooooooooooooo8ooooo     8   EBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                          R   R        8 Q      CAAAAAAAAAAAAAAAAAD     CAAAAAAAAAAAAAAAAAD    A
+                           7      7       oooooooo              EMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD   o  7o   o 7 o   o7 o T R   R   7   Q  R T    CAAAAAAAAAAAAAAAAAD     CAAAAAAAAAAAAAAAAAD         *
+BBF  EF  EBBF  EBF  EBF  EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF  Q  oEBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD Q  EBBBBBBBBBBBBBBBBF    R   RQ  Q   R  R      CAAAAAAAAAAAAAAAAAD     CAAAAAAAAAAAAAAAAAD         G
