@@ -219,7 +219,7 @@ public abstract class Creature extends Sprite {
         Sets the state of this Creature.
     */
     public void HitTile() {
-        this.state += 0.2;
+        this.state += 0.5;
         stateTime = 0;
         if (state >= 2) {
             state = STATE_DEAD;

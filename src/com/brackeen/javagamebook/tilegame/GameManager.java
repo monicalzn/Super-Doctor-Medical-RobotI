@@ -639,9 +639,10 @@ public class GameManager extends GameCore {
             else if (dx < 0) {
                 creature.setX(TileMapRenderer.tilesToPixels(tile.x + 1));
             }
-            if(CurMap){                                                          //nave choca con un tile muere (:
-                creature.HitTile();                
-            }
+            /*if(CurMap){                                                          //nave choca con un tile muere (:
+                creature.HitTile();
+                lives--;
+            }*/
             creature.collideHorizontal();
         }
         if (creature instanceof Player) {

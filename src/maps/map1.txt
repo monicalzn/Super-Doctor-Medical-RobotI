@@ -11,13 +11,13 @@
                    
 
                                               
-              J J J J J J J J J J J  J J J J J J J J J J J         J J J J J J J J J J J J J J J J J J J J J J J J J J J  J J J J
-KJKKKKKKKKKKKK                      J                     K J J K J                K
-              KJJK  JJ                   K J J                          K  J              JJ
-                      J K                     K K J                                               J
-                            K K K J K               J J K J        J                                       K
-                                J J K    J K                                   K    JK                                J
-                       K J K K           J KJJJ JK                        K                           K                           *
-              JKKJ  KK                          KK JK JK JJ                           J                             
-JJKKJKJJKKJJJJ               JJK JK JK             KKKJ                                        K
+              J J J J J J J J J J J  J J J J J J J J J J J         
+     KKKKKKKKK               ooooo J        ooooo ooo    K J J K J     K  oo o o o o o oo o
+              KJJK  JJ              ooo  K J J                   K  J    JJ   ooo o o o o
+                      J K                ooo  K K J       JK     oo oo oo   oo 
+                            K K K J K        ooo    J J K J   oo   J        ooo   K
+                                J J K    J K    ooo   oo         ooo             oo           J
+                       K J K K      ooo  J KJJJ JK        ooo                K            *
+              JKKJ  KK                  ooo     KK JK JK JJ            oooo   ooo   
+JJKKJKJJKKJJJJ               JJK JK JK    ooo      KKKJ       o  *  o o o  o
                                                  
