@@ -11,10 +11,10 @@
 #   3       Boss
                                                                  
 
-        N                                                                                                                                                                  GI 
-GI               N                                                                                  EBBBBBBBBBBBBBBBBBF               EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF
-            N                                                                                   N   CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
-    N                                                                                 N     N       CAAAAAAAAAAAAAAAAAD       N       CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
-                    N                                      GI    GI    GI     EF                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
-                                                                              CD         N          CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBF
-                        BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB                    CD                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBB	
+                                                                                         A                                                                                GI 
+GI      A        A                                                                                  EBBBBBBBBBBBBBBBBBF               EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF
+    *       A                                                                     A                 CAAAAAAAAAAAAAAAAAD    A      A   CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+    A                                                                                 A     A  A    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+                    A                                     GHI    GI   GI      EF                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD
+                                                                              CD         A          CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBF *
+                          EBBBBBBBBBBBBBBBBBBBBBBBBBBBF                       CD                    CAAAAAAAAAAAAAAAAAD               CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALBB	

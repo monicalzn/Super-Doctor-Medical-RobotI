@@ -17,7 +17,7 @@ public class Bullet extends Sprite{
     private double rad;
     private double speed;
     private boolean live;
-    
+    private int timer = 0;
     private Color color1;
     
     //Constructor
@@ -34,7 +34,7 @@ public class Bullet extends Sprite{
         r=6;
 
         rad = Math.toRadians(angle);
-        speed = 2;
+        speed = 3;
         ddx = Math.cos(rad) * speed;
         ddy = Math.sin(rad) * speed;
     
@@ -46,7 +46,12 @@ public class Bullet extends Sprite{
     public boolean updateBullet(long elapsedTime){
         this.setX(this.getX()+(float)ddx);
         this.setY(this.getY()+(float)ddy);
-  
+        
+        timer++;
+        if(timer > 1000){
+            timer = 0;
+            return true;
+        }
         //anim.update(elapsedTime);
     
        /* if(this.getX() < -r || this.getX() > GameManager.screen.getWidth() - TileMapRenderer.offsetX + r ||

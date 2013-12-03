@@ -629,6 +629,12 @@ public class ResourceManager {
         playerBusterAnim[7] = createPlayJumAnim(images[7][121], images[7][122], images[7][123], images[7][124],
                     images[7][125], images[7][126]);
         
+        for (int i=0; i<images[0].length; i++) {
+            // right-facing images
+            images[0][i] = getMirrorImage(images[0][i]);
+        }
+        boss3Anim[0] = createBossAnim(images[0][109], images[0][109], images[0][110], images[0][110]);
+        
         // create creature sprites
         playerSprite = new Player(playerAnim[0], playerAnim[1], playerAnim[2], playerAnim[3], playerAnim[4], playerAnim[5], playerAnim[7], playerAnim[6]);
         playerBusterSprite = new Player(playerBusterAnim[0], playerBusterAnim[1], playerBusterAnim[2], playerBusterAnim[3], playerBusterAnim[4], 

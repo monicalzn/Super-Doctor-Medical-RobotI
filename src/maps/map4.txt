@@ -9,12 +9,14 @@
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
 #   3       Boss
-                                                                 
 
-                                      EBHHHHHHHHHHI
-                                     EMD                                                            N    N    N    N    EBBBBBBBBBBBBBBBBBF
-                                    EMAD             GI                         EBBBBBBBBBBBBBBBF                       CAAAAAAAAAAAAAAAAAD
-                  EBBBBBBBBBBBBBBBBBMAAD                          EBBBBBBBBBBBBBMAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAAD
-                 EMAAAAAAAAAAAAAAAAAAAAD                          CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAAD
-                EMAAAAAAAAAAAAAAAAAAAAAD                  EF      CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAAD
-BBBBBBBBBBBBBBBBMAAAAAAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBMLBBBBBBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                       CAAAAAAAAAAAAAAAAALBBBBBBBBBBBBBBBBBBBBBBBB
+  CAAAAAAAAAAAAAAAAAAAAD                                                             EBBBBBBBBBBF  CAAAAAAAAAAAAAAAAAD      R     R   R  R
+  CAAAAAAAAAAAAAAAAAAAAD    ooooooooooooooooooooooooooooo                           EMAAAAAAAAAAF  CAAAAAAAAAAAAAAAAAD      R     R   R  R
+  CAAAAAAAAAAAAAAAAAAAAD          ooooooooooooooooooo  EF                          EMAAAAAAAAAAAF  CAAAAAAAAAAAAAAAAAD      S     R   R  R                      9
+  CAAAAAAAAAAAAAAAAAAAAD                              EMD                         EMAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD            R   R  R      EBBBBBBBBBBBBBBAAAF
+  CAAAAAAAAAAAAAAAAAAAAD      EBBBBBBBBBBBBBBBBBBBBBBBMAD               EBBBBBBBBBMAAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD         Q  R   R  S      CAAAAAAAAAAAAAAAAAD
+  CAAAAAAAAAAAAAAAAAAAAD      NPPPPPPPPPPPPPPPPPPPPPPPPPO            EBBMAAAAAAAAAAAAAAAAAAAAAAAD  CAAAAAAAAAAAAAAAAAD         R  R   S     A   CAAAAAAAAAAAAAAAAAD
+  NPPPPPPPPPPPPPPPPPPPPO    A         ooooooooooooooooooo           EMAAAAAAAAAAAAAAAAAAAAAAAAAAD  NPPPPPPPPPPPPPPPPPO     Q   R  S             CAAAAAAAAAAAAAAAAAD
+                                    oooooooooooooooooooo         EBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAD                          R   R         Q      CAAAAAAAAAAAAAAAAAD    A
+                                          oooooooo              EMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD   o   o   o   o   o  o A R   R      Q  R      CAAAAAAAAAAAAAAAAAD         *
+BBF  EF  EBBF  EBF  EBF  EBBBBBBBBBBBBBBBBBBBBBBBBBBBBBF  A  oEBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD A  EBBBBBBBBBBBBBBBBF    R   R  Q   R  R      CAAAAAAAAAAAAAAAAAD         G
